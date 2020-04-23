@@ -1,32 +1,44 @@
 import React, {useState} from 'react';
 import { Text, View, StyleSheet, Button,} from 'react-native';
 import Constants from 'expo-constants';
-import AB from './reactcounter'
+import Age from './Age'
 
-export default function App() {
 
-   
-  return (
+
+const App = ()=> {
+  const [name, setname] = useState({first: "" , last: ""})
+    return (
     <View style={styles.container}>
-
       <Text style={styles.paragraph}>
-        Name : M.Abdul Moeez Atlas
+       First Name: {name.first}
       </Text>
 
       <Text style={styles.paragraph}>
-        Class: BCS-6A
+        Last Name : {name.last}
       </Text>
 
-      <Text style={styles.paragraph}>
-        Reg No: FA17-BCS-040
-      </Text>
+      <Age/>
 
-      <AB/>
+      <View style = {{flexDirection: "row"}}>
 
+        <View style= {{padding : 10, flexDirection: "row",}}>
+          <Button title = "First name" onPress = {() => setname({...name , first: "Moeez"})} />
+        </View>
+
+        <View style= {{padding : 10, flexDirection: "row",}}>
+          <Button title = "Last name" onPress = {()=> setname({...name , last: "Atlas"}) }/>
+        </View>
+   
+      </View>
+      <Button title = "reset" onPress = {()=> setname({first:"", last:""})}/>
+        
+      
 
     </View>
   );
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -41,7 +53,13 @@ const styles = StyleSheet.create({
   paragraph: {
     margin: 10,
     fontSize: 18,
-    fontWeight: 'bold',
-    justifyContent: 'center'
+    fontWeight: 'bold'
   },
+  Button: {
+    margin: 10, 
+    flexDirection: "row"
+
+  }
 });
+
+export default App
