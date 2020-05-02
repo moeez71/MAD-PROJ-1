@@ -1,5 +1,5 @@
 import React from "react"
-import { Text, View, StyleSheet, Button, TouchableNativeFeedback,} from 'react-native';
+import { Text, View, StyleSheet, Button, TouchableOpacity,} from 'react-native';
 
 
 class Age extends React.Component{
@@ -29,13 +29,16 @@ class Age extends React.Component{
     }
     render(){
         return(
-            <View style ={{flexDirection: "row"}}>
+            <View style ={{flexDirection: "row" }}>
+                
                 <Text style = {styles.age}>
                     Age: {this.state.age}
                 </Text>
-
+                
              <View style= {{padding : 10, flexDirection: "row",}}>
-                <Button title = " + " onPress= {this.inc} />
+                <TouchableOpacity style= {styles.opacity} onPress= {this.inc}>
+                    <Text style= {{fontSize: 18 , fontWeight: 'bold'}}> Inc </Text>
+                </TouchableOpacity>
              </View>
 
              <View style= {{padding : 10, flexDirection: "row",}}>
@@ -53,6 +56,13 @@ const styles = StyleSheet.create({
         margin: 10,
         fontSize: 18,
         fontWeight: 'bold'
-    }
+    },
+    opacity: {
+        backgroundColor: 'pink', 
+        width: 50,
+        justifyContent: "center",
+        alignContent: "center"
+    },
+    
 })
 export default Age
